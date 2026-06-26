@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.custom-node:hover {
+  filter: brightness(0.97);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12) !important;
+}
+
+.react-flow__edge path {
+  stroke-width: 1.5;
+}
+
+.react-flow__edge-label {
+  font-size: 9px;
+  fill: #64748b;
+  font-weight: 500;
+}
+
+.react-flow__controls {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.react-flow__controls button {
+  border-bottom-color: #e2e8f0 !important;
+}
+
+.react-flow__minimap {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Arrow markers */
+.react-flow__arrow {
+  overflow: visible;
+}
+
+/* NodeResizer handle styling */
+.react-flow__resize-control {
+  border: none !important;
+  background: transparent !important;
+}
+
+.react-flow__resize-control.handle {
+  width: 8px !important;
+  height: 8px !important;
+  border: 2px solid white !important;
+  border-radius: 2px !important;
+}
+
+.react-flow__resize-control.line {
+  border: none !important;
+  background: transparent !important;
+}

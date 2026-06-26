@@ -1,0 +1,17 @@
+示例输入：
+用户问题："我想知道今年适合创业吗？"
+命理子系统：bazi
+符号计算结果：{day_master: "甲", strength: "strong", favorable: ["火", "土"], current_cycle: {stem: "丙", branch: "寅"}, current_year: {stem: "丁", branch: "巳"}}
+相关知识：["身强者适合开创型事业", "大运透偏财主偏财运"]
+
+示例输出：
+{
+  "interpretation_text": "从八字来看，您的日主甲木身强，今年丁巳年，天干丁火为伤官，地支巳火为食神。伤官透出代表创意和表达能力强，食神生财，有一定的创业能量。加上当前丙寅大运，天干丙火偏财透出，整体偏财运不错。不过需要注意的是，巳火与原局可能形成刑冲，创业过程中可能会有波折。建议在创业前做好充分的市场调研和资金准备。",
+  "key_findings": [
+    {"claim": "日主身强，有开创能力", "evidence_ref": "field:symbolic_result.day_master_strength"},
+    {"claim": "丁巳年伤官食神透出，创意和财运有基础", "evidence_ref": "field:symbolic_result.current_year"},
+    {"claim": "大运丙寅偏财透出，偏财运较好", "evidence_ref": "field:symbolic_result.current_cycle"},
+    {"claim": "巳火可能与原局形成刑冲，需注意波折", "evidence_ref": "doc:symbolic_rules:sr_002"}
+  ],
+  "confidence": 0.78
+}

@@ -1,0 +1,10 @@
+综合分析：
+"{{ synthesis.synthesis_text }}"
+用户问题："{{ question }}"
+当前重试次数：{{ retry_count }}/{{ max_retries }}
+{% if evidence_validation %}
+Evidence Map 验证：
+{% for ev in evidence_validation %}
+- {{ ev.claim }}: {{ ev.status }}{% if ev.issue %} ({{ ev.issue }}){% endif %}
+{% endfor %}
+{% endif %}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>YHJ Agent Demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="workspace">
+        <header>
+          <h1>状态感知多轮 Agent Demo</h1>
+          <p>输入问题后查看路由、节点选择、artifact 复用和 critic 结果。</p>
+        </header>
+        <div class="examples">
+          <button data-example="我未来一年事业怎么判断？">新任务</button>
+          <button data-example="我是 2000 年 3 月 4 日晚上 8 点在重庆出生，未来一年事业怎么判断？">带字段任务</button>
+          <button data-example="你说渐进式转型是什么意思？">追问</button>
+          <button data-example="我刚刚说错了，不是成都，是重庆。">纠错</button>
+          <button data-example="太长了，给我三条结论">格式调整</button>
+        </div>
+        <label class="field">
+          <span>Session ID</span>
+          <input id="sessionId" value="demo-session" />
+        </label>
+        <textarea id="message">我未来一年事业怎么判断？</textarea>
+        <div class="actions">
+          <button id="send">运行一轮</button>
+          <button id="newSession" type="button">新建会话</button>
+          <button id="loadSession" type="button">刷新状态</button>
+        </div>
+      </section>
+      <section class="result">
+        <h2>最终输出</h2>
+        <pre id="finalReport">等待运行</pre>
+        <h2>Session</h2>
+        <div id="sessionPanel" class="grid"></div>
+        <h2>执行状态</h2>
+        <div id="statusGrid" class="grid"></div>
+        <h2>RAG Evidence</h2>
+        <div id="evidenceList" class="evidence-list"></div>
+        <h2>Trace</h2>
+        <div id="trace" class="timeline"></div>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

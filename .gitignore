@@ -1,0 +1,53 @@
+# Python cache and build output
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+.venv-win/
+venv/
+env/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+Config.txt
+*.key
+*.pem
+*.crt
+
+# Runtime logs and local state
+*.log
+logs/
+data/*.db
+data/*.db-shm
+data/*.db-wal
+
+# Large RAG data, generated indexes, and batch inputs
+data/chroma_db/
+data/index/
+data/raw/
+data/processed/
+data/embedding_input/
+
+# Frontend dependencies and generated output
+node_modules/
+architecture-viewer/node_modules/
+architecture-viewer/dist/
+architecture-viewer/.vite/
+
+# Local editor and tool files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.claude/

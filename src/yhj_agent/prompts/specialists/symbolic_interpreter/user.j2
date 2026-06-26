@@ -1,0 +1,18 @@
+用户问题："{{ question }}"
+命理子系统：{{ metaphysical_subsystem }}
+{% if symbolic_result %}
+符号计算结果：
+  日主：{{ symbolic_result.day_master }}（{{ symbolic_result.day_master_strength }}）
+  喜用神：{% for e in symbolic_result.favorable_elements %}{{ e }}{% if not loop.last %}, {% endif %}{% endfor %}
+  忌神：{% for e in symbolic_result.unfavorable_elements %}{{ e }}{% if not loop.last %}, {% endif %}{% endfor %}
+  当前大运：{{ symbolic_result.current_cycle.heavenly_stem }}{{ symbolic_result.current_cycle.earthly_branch }}（{{ symbolic_result.current_cycle.start_age }}-{{ symbolic_result.current_cycle.end_age }}岁）
+  流年：{{ symbolic_result.current_year.heavenly_stem }}{{ symbolic_result.current_year.earthly_branch }}
+{% else %}
+符号计算结果：无（缓存未命中或非命理咨询）
+{% endif %}
+相关知识：
+{% for c in (pruned_context.chunks | default([])) %}- {{ c.content }}
+{% endfor %}
+{% if relevant_memories %}用户历史记忆：
+{% for m in relevant_memories %}- {{ m }}
+{% endfor %}{% endif %}

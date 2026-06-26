@@ -1,0 +1,8 @@
+用户问题："{{ question }}"
+{% if pruned_context and pruned_context.chunks %}
+相关知识：
+{% for c in pruned_context.chunks %}- {{ c.content }}
+{% endfor %}{% endif %}
+{% if relevant_memories %}用户历史记忆：
+{% for m in relevant_memories %}- {{ m }}
+{% endfor %}{% endif %}

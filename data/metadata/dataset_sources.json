@@ -1,0 +1,27 @@
+[
+  {
+    "dataset_name": "Pradeep016/career-guidance-qa-dataset",
+    "source_url": "https://huggingface.co/datasets/Pradeep016/career-guidance-qa-dataset",
+    "license": "cc-by-4.0",
+    "format": "csv",
+    "is_cleaned": true,
+    "use_case": "职业咨询 QA 检索与解释型问答证据"
+  },
+  {
+    "dataset_name": "aramasethu/career-coach-sft-dataset",
+    "source_url": "https://huggingface.co/datasets/aramasethu/career-coach-sft-dataset",
+    "license": null,
+    "format": "parquet",
+    "is_cleaned": true,
+    "use_case": "职业教练对话和面试准备类建议检索"
+  },
+  {
+    "dataset_name": "Kaggle AI-Powered Job Recommendations",
+    "source_url": "https://www.kaggle.com/datasets/samayashar/ai-powered-job-recommendations",
+    "license": null,
+    "format": "kaggle",
+    "is_cleaned": true,
+    "use_case": "岗位推荐、技能匹配和现实职业约束检索"
+  }
+]
+

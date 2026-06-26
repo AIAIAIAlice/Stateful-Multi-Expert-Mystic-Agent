@@ -1,0 +1,97 @@
+=== 用户原始输入 ===
+{{ raw_input }}
+
+聚焦问题：{{ focus_question }}
+输出风格：{{ output_style }}
+展示模式：{{ presentation_mode }}
+{% if special_format_requests %}特殊格式要求：{{ special_format_requests | join('、') }}{% endif %}
+
+=== 专家证据：命理视角 ===
+{% if specialists.symbolic_interpreter is defined %}
+摘要：{{ specialists.symbolic_interpreter.content.summary | default(specialists.symbolic_interpreter.claims[0] | default('无')) }}
+正文：{{ specialists.symbolic_interpreter.content.interpretation_text | default('无') }}
+置信度：{{ specialists.symbolic_interpreter.confidence | default(0.5) }}
+关键发现：
+{% for f in (specialists.symbolic_interpreter.content.key_findings | default([])) %}
+- {{ f.claim | default(f) }}{% if f.evidence_ref is defined %}（证据：{{ f.evidence_ref }}）{% endif %}{% if f.impact is defined %}；影响：{{ f.impact }}{% endif %}
+{% endfor %}
+证据块：
+{% for b in (specialists.symbolic_interpreter.content.evidence_blocks | default([])) %}
+- {{ b.label }}：{{ b.value }}
+{% endfor %}
+不确定性：
+{% for u in (specialists.symbolic_interpreter.content.uncertainties | default([])) %}
+- {{ u }}
+{% endfor %}
+{% endif %}
+
+=== 专家证据：心理视角 ===
+{% if specialists.psychology_support is defined %}
+摘要：{{ specialists.psychology_support.content.summary | default(specialists.psychology_support.claims[0] | default('无')) }}
+正文：{{ specialists.psychology_support.content.support_text | default('无') }}
+置信度：{{ specialists.psychology_support.confidence | default(0.5) }}
+情绪标签：{{ (specialists.psychology_support.content.emotion_tags | default([])) | join('、') }}
+认知重构：
+{% for r in (specialists.psychology_support.content.cognitive_reframes | default([])) %}
+- {{ r }}
+{% endfor %}
+不确定性：
+{% for u in (specialists.psychology_support.content.uncertainties | default([])) %}
+- {{ u }}
+{% endfor %}
+{% endif %}
+
+=== 专家证据：现实建议 ===
+{% if specialists.practical_advisor is defined %}
+摘要：{{ specialists.practical_advisor.content.summary | default(specialists.practical_advisor.claims[0] | default('无')) }}
+置信度：{{ specialists.practical_advisor.confidence | default(0.5) }}
+关键建议：
+{% for s in (specialists.practical_advisor.content.key_suggestions | default([])) %}
+- {{ s }}
+{% endfor %}
+风险提示：
+{% for r in (specialists.practical_advisor.content.risk_warnings | default([])) %}
+- {{ r }}
+{% endfor %}
+行动项：
+{% for a in (specialists.practical_advisor.content.action_items | default([])) %}
+- {{ a.action | default(a) }}{% if a.timeline is defined and a.timeline %}；时间：{{ a.timeline }}{% endif %}{% if a.priority is defined and a.priority %}；优先级：{{ a.priority }}{% endif %}
+{% endfor %}
+决策矩阵：
+{% for d in (specialists.practical_advisor.content.decision_matrix | default([])) %}
+- {{ d.option | default(d) }}：适配度 {{ d.fit | default('') }}；风险 {{ d.risk | default('') }}；时间线 {{ d.timeline | default('') }}
+{% endfor %}
+不确定性：
+{% for u in (specialists.practical_advisor.content.uncertainties | default([])) %}
+- {{ u }}
+{% endfor %}
+{% endif %}
+
+=== 综合研判 ===
+{% if synthesis.synthesis_text is defined %}
+总摘要：{{ synthesis.synthesis_text }}
+{% endif %}
+{% if synthesis.sections is defined %}
+{% for section_name, section in synthesis.sections.items() %}
+{{ section_name }}：
+- 摘要：{{ section.summary | default('') }}
+{% if section.key_claims is defined %}{% for c in section.key_claims %}- 结论：{{ c }}
+{% endfor %}{% endif %}
+{% if section.key_actions is defined %}{% for a in section.key_actions %}- 行动：{{ a }}
+{% endfor %}{% endif %}
+{% if section.risks is defined %}{% for r in section.risks %}- 风险：{{ r }}
+{% endfor %}{% endif %}
+{% if section.open_questions is defined %}{% for q in section.open_questions %}- 待确认：{{ q }}
+{% endfor %}{% endif %}
+{% endfor %}
+{% endif %}
+
+=== 评估结果 ===
+- overall_score={{ evaluation.overall_score | default('') }}
+- safety_score={{ evaluation.safety_score | default('') }}
+- evidence_score={{ evaluation.evidence_score | default('') }}
+- practicality_score={{ evaluation.practicality_score | default('') }}
+- balance_score={{ evaluation.balance_score | default('') }}
+- actionability_score={{ evaluation.actionability_score | default('') }}
+
+请基于以上材料，输出一份可直接给前端渲染的 FinalReportAPI JSON。

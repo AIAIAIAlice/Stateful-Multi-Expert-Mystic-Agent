@@ -1,0 +1,53 @@
+{% if debate_output and debate_output.debate_occurred %}
+=== 辩论结果与修订建议 ===
+综合指引：{{ debate_output.resolution.synthesis_guidance | default('') }}
+{% for role, update in (debate_output.specialist_updates | default({})).items() %}
+- {{ role }}：
+  原立场：{{ update.original_position | default('') }}
+  修订后：{{ update.revised_position | default('') }}
+{% endfor %}
+{% endif %}
+
+=== 命理专家 ===
+{% if specialists.symbolic_interpreter is defined %}
+摘要：{{ specialists.symbolic_interpreter.content.summary | default(specialists.symbolic_interpreter.claims[0] | default('无')) }}
+正文：{{ specialists.symbolic_interpreter.content.interpretation_text | default('无') }}
+关键发现：
+{% for f in (specialists.symbolic_interpreter.content.key_findings | default([])) %}
+- {{ f.claim | default(f) }}{% if f.evidence_ref is defined %}（{{ f.evidence_ref }}）{% endif %}
+{% endfor %}
+不确定性：
+{% for u in (specialists.symbolic_interpreter.content.uncertainties | default([])) %}
+- {{ u }}
+{% endfor %}
+{% endif %}
+
+=== 心理专家 ===
+{% if specialists.psychology_support is defined %}
+摘要：{{ specialists.psychology_support.content.summary | default(specialists.psychology_support.claims[0] | default('无')) }}
+正文：{{ specialists.psychology_support.content.support_text | default('无') }}
+认知重构：
+{% for r in (specialists.psychology_support.content.cognitive_reframes | default([])) %}
+- {{ r }}
+{% endfor %}
+情绪标签：{{ (specialists.psychology_support.content.emotion_tags | default([])) | join('、') }}
+{% endif %}
+
+=== 现实建议专家 ===
+{% if specialists.practical_advisor is defined %}
+摘要：{{ specialists.practical_advisor.content.summary | default(specialists.practical_advisor.claims[0] | default('无')) }}
+关键建议：
+{% for s in (specialists.practical_advisor.content.key_suggestions | default([])) %}
+- {{ s }}
+{% endfor %}
+风险提示：
+{% for r in (specialists.practical_advisor.content.risk_warnings | default([])) %}
+- {{ r }}
+{% endfor %}
+行动项：
+{% for a in (specialists.practical_advisor.content.action_items | default([])) %}
+- {{ a.action | default(a) }}
+{% endfor %}
+{% endif %}
+
+请输出一份严格 JSON 的 SynthesisResult，保留核心证据、行动含义、风险与待确认问题。

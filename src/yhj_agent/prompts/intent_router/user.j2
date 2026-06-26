@@ -1,0 +1,11 @@
+用户问题："{{ question }}"
+出生信息：{{ birth_year }}年{{ birth_month }}月{{ birth_day }}日 {{ birth_hour }} {{ "男" if gender == "male" else "女" }} {{ birth_location }}
+咨询目标：{{ consultation_goal }}
+期望风格：{{ output_style }}
+缺失字段：{% if missing_fields %}{{ missing_fields | join(', ') }}{% else %}无{% endif %}
+{% if consultation_request.consultation_type %}上一轮咨询类型：{{ consultation_request.consultation_type }}{% endif %}
+{% if consultation_request.consultation_intent %}上一轮意图：{{ consultation_request.consultation_intent }}
+上一轮报告摘要：{{ (final_report.get("report_text", "") if final_report is mapping else final_report.report_text)[:300] }}{% endif %}
+{% if not consultation_request.consultation_type and last_session_metadata %}上一轮咨询类型：{{ last_session_metadata.last_consultation_type }}
+上一轮意图：{{ last_session_metadata.last_consultation_intent }}
+上一轮报告摘要：{{ last_session_metadata.last_report_summary }}{% endif %}
