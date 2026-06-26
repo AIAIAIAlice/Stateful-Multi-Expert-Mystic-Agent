@@ -1,8 +1,9 @@
-# YHJ Agent
+# Stateful-Multi-Expert-Mystic-Agent
+
 
 Chinese documentation: [README_CN.md](README_CN.md)
 
-YHJ Agent is a multi-turn agent execution system inspired by LangGraph-style state orchestration. It is designed for personalized consultation workflows and coordinates input normalization, task planning, deterministic tool calls, RAG retrieval, specialist-agent collaboration, quality evaluation, and report generation in a traceable flow.
+Stateful-Multi-Expert-Mystic-Agent is a multi-turn agent execution system inspired by LangGraph-style state orchestration. It is designed for personalized consultation workflows and coordinates input normalization, task planning, deterministic tool calls, RAG retrieval, specialist-agent collaboration, quality evaluation, and report generation in a traceable flow.
 
 ## Key Features
 
