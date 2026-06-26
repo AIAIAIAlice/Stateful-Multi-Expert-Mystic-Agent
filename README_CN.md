@@ -1,8 +1,9 @@
-﻿# YHJ Agent
+﻿# Stateful-Multi-Expert-Mystic-Agent
+
 
 英文文档：[README.md](README.md)
 
-YHJ Agent 是一个基于 LangGraph 思路构建的多轮 Agent 执行系统，面向个性化咨询场景。项目将输入理解、任务规划、确定性工具调用、RAG 检索、专家 Agent 协作、质量评估和报告生成组织为可追踪的执行流程。
+Stateful-Multi-Expert-Mystic-Agent 是一个基于 LangGraph 思路构建的多轮 Agent 执行系统，面向个性化咨询场景。项目将输入理解、任务规划、确定性工具调用、RAG 检索、专家 Agent 协作、质量评估和报告生成组织为可追踪的执行流程。
 
 ## 核心功能
 
